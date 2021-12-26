@@ -7,3 +7,5 @@ This repo is used as a starter for a _very basic_ HTML web application using no 
 Sources of information:
 1. https://docs.microsoft.com/en-us/azure/static-web-apps/getting-started?tabs=vanilla-javascript
 2. https://www.youtube.com/watch?v=rQryOSyfXmI&list=PLl1gkwYU90QlfX9oIJvC4JJKaucei7Hx8&t=0s
+3. https://startbootstrap.com/
+1. 
