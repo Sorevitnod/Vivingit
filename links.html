@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.rawgit.com/Keyang/node-csvtojson/d41f44aa/browser/csvtojson.min.js"></script>
+    <title>Link Library</title>
+</head>
+<body>
+    <h1>Link Library</h1>
+    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS42INfmN0SsQOtKLOyn8qPIp_7JOog8OOQYiLE8ReFJb59X0huMWNxUFeJYbS_h1WC6XbiQrkO1dw9/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="80%" height="400px"></iframe>
+
+
+    <h2>Items</h2>
+    <main></main>
+
+</body>
+<script>
+    const url = "https://docs.google.com/spreadsheets/d/1kUMrK-7cKRb3JaAl6JX43vsH5-Drz31xuxVEV5RVHx8/export?format=csv"
+    const main = document.querySelector("main");
+    main.innerHTML="<p>Loading...</p>"
+    fetch(url).then(result=>result.text()).then(function(csvtext) {
+        return csv().fromString(csvtext);
+    }).then(function(csv) {
+// main.innerHTML = "<code>" + JSON.stringify(csv) + "</code>";
+csv.forEach(function(csv) {
+    main.innerHTML += "<h3>" +  row.Number + "</h3>";
+});
+    
+    });
+</script>
+</html>
