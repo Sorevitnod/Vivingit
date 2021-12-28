@@ -10,8 +10,7 @@
 <body>
     <h1>Link Library</h1>
     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS42INfmN0SsQOtKLOyn8qPIp_7JOog8OOQYiLE8ReFJb59X0huMWNxUFeJYbS_h1WC6XbiQrkO1dw9/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="80%" height="400px"></iframe>
-
-
+    
     <h2>Items</h2>
     <main></main>
 
@@ -19,13 +18,18 @@
 <script>
     const url = "https://docs.google.com/spreadsheets/d/1kUMrK-7cKRb3JaAl6JX43vsH5-Drz31xuxVEV5RVHx8/export?format=csv"
     const main = document.querySelector("main");
-    main.innerHTML="<p>Loading...</p>"
+    main.innerHTML = "<p>Loading...</p>"
     fetch(url).then(result=>result.text()).then(function(csvtext) {
         return csv().fromString(csvtext);
     }).then(function(csv) {
 // main.innerHTML = "<code>" + JSON.stringify(csv) + "</code>";
-csv.forEach(function(csv) {
+csv.forEach(function(row) {
     main.innerHTML += "<h3>" +  row.Number + "</h3>";
+    main.innerHTML += "<h3>" +  row.Tag + "</h3>";
+    main.innerHTML += "<h3>" +  row.Description + "</h3>";
+    main.innerHTML += "<h3>" +  row.Url + "</h3>";
+
+    
 });
     
     });
