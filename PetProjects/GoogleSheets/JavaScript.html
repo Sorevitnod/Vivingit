@@ -1,25 +1,32 @@
 <script>
-    /*
-    *THIS FUNCTION CALLS THE getData() FUNCTION IN THE Code.gs FILE, 
-    *AND PASS RETURNED DATA TO showData() FUNCTION
-    */
-    google.script.run.withSuccessHandler(showData).getData();
-   
-    //THIS FUNCTION GENERATE THE DATA TABLE FROM THE DATA ARRAY
-    function showData(dataArray){
-      $(document).ready(function(){
-        $('#data-table').DataTable({
-          data: dataArray,
-          //CHANGE THE TABLE HEADINGS BELOW TO MATCH WITH YOUR SELECTED DATA RANGE
-          columns: [
-            {"title":"Number"},
-            {"title":"Tag"},
-            {"title":"Description"},
-            {"title":"URL"},
-            {"title":"Link"},
-          ]
-        });
+	/*
+  *THIS FUNCTION CALL THE getData() FUNCTION IN THE Code.gs FILE, 
+  *AND PASS RETURNED DATA TO showData() FUNCTION
+  */
+  google.script.run.withSuccessHandler(showData).getData();
+
+  //THIS FUNCTION GENERATE THE DATA TABLE FROM THE DATA ARRAY
+  function showData(dataArray){
+    $(document).ready(function(){
+      $('#data-table').DataTable({
+        data: dataArray,
+        //CHANGE THE TABLE HEADINGS BELOW TO MATCH WITH YOUR SELECTED DATA RANGE
+        columns: [
+          {"title":"ID"},
+          {"title":"Tag"},
+          {"title":"Description"},
+          {"title":"Link"},
+          {"title":"URL",
+            "render": function(data, type, row, meta){
+              if(type === 'display'){
+                data = '<a class="btn btn-outline-primary btn-sm" href="' + data + '"target="_blank" role="button">' + "Link"+ '</a>';
+          }
+          return data;
+          }
+          }
+        ]
       });
-    }
-  </script>
+    });
+  }
+</script>
   
